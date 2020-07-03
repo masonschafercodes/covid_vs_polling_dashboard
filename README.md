@@ -15,7 +15,7 @@ npm run dev
 ## Stack
 This dashboard uses vanilla js, html, css on the frontend, but takes advantage of some nice javascript libraries like leafletjs, chartjs, and d3js to help display the data in a clean and concise fashion.
 
-##Accessing the backend
+## Accessing the backend
 Fork and follow installation instructions located above to get this up and running - access the [backend](https://www.google.com) here.
 
 ## Contributing
