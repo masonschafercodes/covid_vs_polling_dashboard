@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coronavirus COVID-19 Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <link rel="stylesheet" href="./static/css/app.css">
+  </head>
+  <body>
+    <div class="App">
+      <div class="title-container">
+        <h1>Coronavirus COVID-19 Analysis:</h1>
+      </div>
+      <div class="confirmed_cases_container">
+        <div class="confirmed_cases">
+          <h3><i>Total Confirmed Cases</i></h3>
+          <h1 id="confirmed_cases_display"></h1>
+        </div>
+        <div class="map_container">
+          <div id="mapid"></div>
+        </div>
+        <div class="chart_container">
+          <canvas id="myChart" width="200" height="95"></canvas>
+        </div>
+      </div>
+      <div class="cases_by_state_container">
+        <div class="cases_by_state">
+          <h3><i>Cases By State</i></h3>
+          <table class="confirmed_cases_table fixed_header">
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="deaths_by_state_container">
+        <div class="deaths_by_state">
+          <h3><i>Total Deaths by State</i></h3>
+          <table class="confirmed_cases_table fixed_header1">
+            <tbody id="deaths_by_state_table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./static/js/mapping.js"></script>
+    <script src="./static/js/table.data.js"></script>
+    <script src="./static/js/chart.data.js"></script>
+  </body>
+</html>
