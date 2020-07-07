@@ -10,15 +10,20 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-    crossorigin=""></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-    <link rel="stylesheet" href="./static/css/app.css">
+    <link rel="stylesheet" href="./static/css/app.css" />
   </head>
   <body>
     <div class="App">
@@ -41,8 +46,7 @@
         <div class="cases_by_state">
           <h3><i>Cases By State</i></h3>
           <table class="confirmed_cases_table fixed_header">
-            <tbody>
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </div>
@@ -50,8 +54,7 @@
         <div class="deaths_by_state">
           <h3><i>Total Deaths by State</i></h3>
           <table class="confirmed_cases_table fixed_header1">
-            <tbody id="deaths_by_state_table">
-            </tbody>
+            <tbody id="deaths_by_state_table"></tbody>
           </table>
         </div>
       </div>
@@ -72,7 +75,17 @@
       integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
       crossorigin="anonymous"
     ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/iso8601-js-period@0.2.1/iso8601.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"
+    ></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./static/js/statesData.js"></script>
+    <script src="./static/js/mapping.helper.js"></script>
     <script src="./static/js/mapping.js"></script>
     <script src="./static/js/table.data.js"></script>
     <script src="./static/js/chart.data.js"></script>
