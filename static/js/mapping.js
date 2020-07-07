@@ -1,7 +1,5 @@
 console.log('mapping!')
 
-console.log(document.getElementById('covid_date_picker').value)
-
 //creating Map View
 var map = L.map('mapid').setView([37.8, -96], 4)
 var accessToken =
@@ -44,26 +42,18 @@ fetch(data_url, { mode: 'cors' })
       })
       .sort(SortByName)
 
-    //testing
-    for (var i = 0; i < arr3.length - 1; i++) {
-      if (arr3[i].state === 'AL' && arr3[i].date >= 20200315) {
-        console.log(arr3[i].date + ' - ' + arr3[i].deaths)
-      }
-    }
-    console.log(arr3)
-    //end testing
+    var national_cases_total = 0
+    var national_deaths_total = 0
 
-    var confirmed_cases_total = 0
-    var currentState = ''
-    for (var j = 0; j < lat.length; j++) {
+    for (var j = 0; j < arr3.length; j++) {
       currentDataNode = arr3[j]
 
-      console.log(currentState)
-
-      confirmed_cases_total += currentDataNode.confirmed_cases
+      national_cases_total += currentDataNode.confirmed_cases
+      national_deaths_total += currentDataNode.deaths
     }
-    var confirmed_cases_display = document.getElementById(
-      'confirmed_cases_display',
+    console.log(
+      `National Deaths ${numberWithCommas(
+        national_deaths_total,
+      )} | National Cases ${numberWithCommas(national_cases_total)}`,
     )
-    confirmed_cases_display.innerHTML = numberWithCommas(confirmed_cases_total)
   })
