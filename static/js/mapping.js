@@ -1,5 +1,7 @@
 console.log('mapping!')
 
+console.log(document.getElementById('covid_date_picker').value)
+
 //creating Map View
 var map = L.map('mapid').setView([37.8, -96], 4)
 var accessToken =

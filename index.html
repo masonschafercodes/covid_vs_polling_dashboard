@@ -30,16 +30,14 @@
       <div class="title-container">
         <h1>Coronavirus COVID-19 Analysis:</h1>
       </div>
-      <div class="confirmed_cases_container">
-        <div class="confirmed_cases">
-          <h3><i>Total Confirmed Cases</i></h3>
-          <h1 id="confirmed_cases_display"></h1>
+      <div class="date_picker_container">
+        <div class="date_picker">
+          <h2><strong>Choose a date to show</strong></h2>
+          <h4>Historical Data:</h4>
+          <input type="date" name="covid_date_picker" id="covid_date_picker" />
         </div>
         <div class="map_container">
           <div id="mapid"></div>
-        </div>
-        <div class="chart_container">
-          <canvas id="myChart" width="200" height="95"></canvas>
         </div>
       </div>
       <div class="cases_by_state_container">
@@ -88,6 +86,5 @@
     <script src="./static/js/mapping.helper.js"></script>
     <script src="./static/js/mapping.js"></script>
     <script src="./static/js/table.data.js"></script>
-    <script src="./static/js/chart.data.js"></script>
   </body>
 </html>
