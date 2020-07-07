@@ -34,28 +34,15 @@
         <div class="date_picker">
           <h2><strong>Choose a date to show</strong></h2>
           <h4>Historical Data:</h4>
-          <input type="date" name="covid_date_picker" id="covid_date_picker" />
+          <input type="date" name="covid_date_picker" id="covidPicker" />
         </div>
         <div class="map_container">
           <div id="mapid"></div>
         </div>
       </div>
       <div class="cases_by_state_container">
-        <div class="cases_by_state">
-          <h3><i>Cases By State</i></h3>
-          <table class="confirmed_cases_table fixed_header">
-            <tbody></tbody>
-          </table>
-        </div>
       </div>
       <div class="deaths_by_state_container">
-        <div class="deaths_by_state">
-          <h3><i>Total Deaths by State</i></h3>
-          <table class="confirmed_cases_table fixed_header1">
-            <tbody id="deaths_by_state_table"></tbody>
-          </table>
-        </div>
-      </div>
     </div>
 
     <script
@@ -81,10 +68,8 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"
     ></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="./static/js/statesData.js"></script>
     <script src="./static/js/mapping.helper.js"></script>
     <script src="./static/js/mapping.js"></script>
-    <script src="./static/js/table.data.js"></script>
   </body>
 </html>

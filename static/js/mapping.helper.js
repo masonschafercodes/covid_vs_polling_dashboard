@@ -1,13 +1,3 @@
-function style(feature) {
-  return {
-    fillColor: 'white',
-    weight: 2,
-    opacity: 0.5,
-    color: 'blue',
-    fillOpacity: 0.3,
-  }
-}
-
 function highlightFeature(e) {
   var layer = e.target
 
@@ -34,4 +24,35 @@ function onEachFeature(feature, layer) {
     mouseout: resetHighlight,
     click: zoomToFeature,
   })
+}
+
+function getColor(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    return arr[i].confirmed_cases > 21000
+      ? '#800026'
+      : arr[i].confirmed_cases <= 20000
+      ? '#BD0026'
+      : arr[i].confirmed_cases < 15000
+      ? '#E31A1C'
+      : arr[i].confirmed_cases < 10000
+      ? '#FC4E2A'
+      : arr[i].confirmed_cases < 5000
+      ? '#FD8D3C'
+      : arr[i].confirmed_cases < 2000
+      ? '#FEB24C'
+      : arr[i].confirmed_cases < 1000
+      ? '#FED976'
+      : '#FFEDA0'
+  }
+}
+
+function style(feature) {
+  return {
+    fillColor: 'white',
+    weight: 2,
+    opacity: 1,
+    color: 'blue',
+    dashArray: '3',
+    fillOpacity: 0.5,
+  }
 }

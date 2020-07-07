@@ -1,11 +1,19 @@
 console.log('mapping!')
 
+//Get date to search
+var date_to_search = ''
+$(document).on('change', '#covidPicker', function () {
+  date_to_search = document
+    .getElementById('covidPicker')
+    .value.replace(/-|\s/g, '')
+})
+
 //creating Map View
 var map = L.map('mapid').setView([37.8, -96], 4)
 var accessToken =
   'pk.eyJ1IjoibWFzb25zY2hhZmVyY29kZXMiLCJhIjoiY2ticjJrZG1yMGFwcDJzb2Vyb2E4aDk3dCJ9.wreRh-9L43Pa35mn-cV0_w'
 
-L.tileLayer(
+var layer = L.tileLayer(
   'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=' +
     accessToken,
   {
@@ -15,9 +23,8 @@ L.tileLayer(
   },
 ).addTo(map)
 
-//using geojson to outline the map
-geojson = L.geoJson(statesData, {
-  style: style,
+var geojson = L.geoJson(statesData, {
+  style: style(),
   onEachFeature: onEachFeature,
 }).addTo(map)
 
@@ -31,29 +38,44 @@ function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
-var data_url = 'http://127.0.0.1:5000/api/state_data'
-fetch(data_url, { mode: 'cors' })
-  .then((resp) => resp.json())
-  .then(function (data) {
-    var arr2 = data
-    var arr3 = arr2
-      .sort(function (a, b) {
-        return new Date(b.date) - new Date(a.date)
-      })
-      .sort(SortByName)
+$(document).on('change', '#covidPicker', function () {
+  var data_url = 'http://127.0.0.1:5000/api/state_data'
+  var geo_url = 'http://127.0.0.1:5000/api/state_geometry'
+  fetch(data_url + `/${parseInt(date_to_search)}`, { mode: 'cors' })
+    .then((resp) => resp.json())
+    .then(function (data) {
+      var arr2 = data
+      var arr3 = arr2
+        .sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date)
+        })
+        .sort(SortByName)
 
-    var national_cases_total = 0
-    var national_deaths_total = 0
+      console.log(arr3)
 
-    for (var j = 0; j < arr3.length; j++) {
-      currentDataNode = arr3[j]
+      fetch(geo_url, { mode: 'cors' })
+        .then((resp) => resp.json())
+        .then(function (geoData) {
+          var geo_arr = geoData.sort(SortByName)
 
-      national_cases_total += currentDataNode.confirmed_cases
-      national_deaths_total += currentDataNode.deaths
-    }
-    console.log(
-      `National Deaths ${numberWithCommas(
-        national_deaths_total,
-      )} | National Cases ${numberWithCommas(national_cases_total)}`,
-    )
-  })
+          for (var z = 0; z < geo_arr.length; z++) {
+            L.marker([geo_arr[z].lat, geo_arr[z].long])
+              .addTo(map)
+              .bindPopup(
+                `State: ${arr3[z].state} <br /> Deaths: ${arr3[z].deaths} <br /> Cases: ${arr3[z].confirmed_cases}`,
+              )
+              .openPopup()
+          }
+        })
+
+      var national_cases_total = 0
+      var national_deaths_total = 0
+
+      for (var j = 0; j < arr3.length; j++) {
+        currentDataNode = arr3[j]
+
+        national_cases_total += currentDataNode.confirmed_cases
+        national_deaths_total += currentDataNode.deaths
+      }
+    })
+})
