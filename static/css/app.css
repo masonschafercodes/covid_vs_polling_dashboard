@@ -136,18 +136,6 @@ body {
   padding-bottom: 10px;
 }
 
-.chart_container {
-  width: 1260px;
-  height: 600px;
-  background-color: #0b3b5f;
-  margin-left: 380px;
-  position: absolute;
-  top: 685px;
-  border-radius: 4px;
-  padding: 10px;
-  padding-bottom: 10px;
-}
-
 #mapid {
   height: 560px;
 }
