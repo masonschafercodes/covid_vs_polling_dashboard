@@ -64,6 +64,25 @@ body {
   margin-left: 65px;
 }
 
+.cases_by_state_container h2 {
+  text-align: center;
+  padding-top: 10px;
+  font-size: 24px;
+  color: #819bae;
+  font-family: sans-serif;
+}
+
+#national_case_container h3 {
+  margin-top: 55px;
+}
+
+.cases_by_state_container h3 {
+  text-align: center;
+  padding-top: 10px;
+  color: #819bae;
+  font-family: sans-serif;
+}
+
 .deaths_by_state h3 {
   text-align: center;
   padding-top: 10px;

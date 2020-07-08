@@ -62,7 +62,9 @@ $(document).on('change', '#covidPicker', function () {
             L.marker([geo_arr[z].lat, geo_arr[z].long])
               .addTo(map)
               .bindPopup(
-                `State: ${arr3[z].state} <br /> Deaths: ${arr3[z].deaths} <br /> Cases: ${arr3[z].confirmed_cases}`,
+                `State: ${arr3[z].state} <br /> Deaths: ${
+                  arr3[z].deaths == null ? '0' : arr3[z].deaths
+                } <br /> Cases: ${arr3[z].confirmed_cases}`,
               )
               .openPopup()
           }
@@ -77,5 +79,12 @@ $(document).on('change', '#covidPicker', function () {
         national_cases_total += currentDataNode.confirmed_cases
         national_deaths_total += currentDataNode.deaths
       }
+
+      document.getElementById(
+        'natCaseSpan',
+      ).innerHTML = `Cases: ${numberWithCommas(national_cases_total)}`
+      document.getElementById(
+        'natDeathSpan',
+      ).innerHTML = `Deaths: ${numberWithCommas(national_deaths_total)}`
     })
 })
