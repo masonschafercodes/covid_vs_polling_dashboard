@@ -1,3 +1,4 @@
+//Created to control what happens when a user highlights over and of the bounds within the geojson
 function highlightFeature(e) {
   var layer = e.target
 
@@ -12,10 +13,13 @@ function highlightFeature(e) {
     layer.bringToFront()
   }
 }
+
+//Explains its self, just resets the highlighed region once the user removes thier mouse from those specefic bounds
 function resetHighlight(e) {
   geojson.resetStyle(e.target)
 }
 
+//Gets the last stored cookie value, used for storing the last lat and lng the user clicked on
 function findCookieValue(value) {
   var cookieToFind = document.cookie
     .split('; ')
@@ -25,6 +29,7 @@ function findCookieValue(value) {
   return cookieToFind
 }
 
+//Zoom to Feature function that controls what happens when a user clicks with the bounds of a state
 function zoomToFeature(e) {
   var coords_clicked = e.target.getBounds()
   document.cookie = `lat=${coords_clicked._northEast.lat};`
@@ -42,26 +47,7 @@ function onEachFeature(feature, layer) {
   })
 }
 
-function getColor(arr) {
-  for (var i = 0; i < arr.length; i++) {
-    return arr[i].confirmed_cases > 21000
-      ? '#800026'
-      : arr[i].confirmed_cases <= 20000
-      ? '#BD0026'
-      : arr[i].confirmed_cases < 15000
-      ? '#E31A1C'
-      : arr[i].confirmed_cases < 10000
-      ? '#FC4E2A'
-      : arr[i].confirmed_cases < 5000
-      ? '#FD8D3C'
-      : arr[i].confirmed_cases < 2000
-      ? '#FEB24C'
-      : arr[i].confirmed_cases < 1000
-      ? '#FED976'
-      : '#FFEDA0'
-  }
-}
-
+//Styling that is given to our map
 function style(feature) {
   return {
     fillColor: 'white',
