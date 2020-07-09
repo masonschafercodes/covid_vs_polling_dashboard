@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@500&display=swap');
 body {
   background-color: #082032 !important;
-  font-family: sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .title-container h1 {
   margin: 15px 130px;
+  text-align: center;
   color: #819bae;
-  font-family: sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .date_picker_container {
@@ -27,7 +29,7 @@ body {
   padding-top: 10px;
   font-size: 16px;
   color: #819bae;
-  font-family: sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .date_picker h4 {
@@ -35,7 +37,7 @@ body {
   padding-top: 10px;
   font-size: 16px;
   color: #819bae;
-  font-family: sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .cases_by_state_container {
@@ -52,12 +54,12 @@ body {
   padding-top: 10px;
   font-size: 16px;
   color: #819bae;
-  font-family: 'Mako';
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .deaths_by_state_container {
   width: 355px;
-  height: 600px;
+  height: 580px;
   background-color: #0b3b5f;
   border-radius: 4px;
   margin-top: 25px;
@@ -69,7 +71,7 @@ body {
   padding-top: 10px;
   font-size: 24px;
   color: #819bae;
-  font-family: sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 #national_case_container h3 {
@@ -80,7 +82,7 @@ body {
   text-align: center;
   padding-top: 10px;
   color: #819bae;
-  font-family: sans-serif;
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .deaths_by_state h3 {
@@ -88,7 +90,7 @@ body {
   padding-top: 10px;
   font-size: 16px;
   color: #819bae;
-  font-family: 'Mako';
+  font-family: 'Maven Pro', sans-serif;
 }
 
 .confirmed_cases_table * {
@@ -150,6 +152,18 @@ body {
   margin-left: 380px;
   position: absolute;
   top: 78px;
+  border-radius: 4px;
+  padding: 10px;
+  padding-bottom: 10px;
+}
+
+.indepth_container {
+  width: 1250px;
+  height: 580px;
+  background-color: #0b3b5f;
+  margin-left: 380px;
+  position: absolute;
+  top: 684px;
   border-radius: 4px;
   padding: 10px;
   padding-bottom: 10px;

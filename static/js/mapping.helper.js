@@ -15,7 +15,23 @@ function highlightFeature(e) {
 function resetHighlight(e) {
   geojson.resetStyle(e.target)
 }
+
+function findCookieValue(value) {
+  var cookieToFind = document.cookie
+    .split('; ')
+    .find((row) => row.startsWith(value))
+    .split('=')[1]
+
+  return cookieToFind
+}
+
 function zoomToFeature(e) {
+  var coords_clicked = e.target.getBounds()
+  document.cookie = `lat=${coords_clicked._northEast.lat};`
+  document.cookie = `lng=${coords_clicked._northEast.lng};`
+  var lat = findCookieValue('lat')
+  var lng = findCookieValue('lng')
+  console.log(`Lat: ${lat}, Lng: ${lng}`)
   map.fitBounds(e.target.getBounds())
 }
 function onEachFeature(feature, layer) {
