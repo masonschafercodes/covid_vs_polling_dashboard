@@ -16,7 +16,7 @@ function coordsIntervalFunction() {
       .then((resp) => resp.json())
       .then(function (data) {
         for (var i = 0; i < data.length; i++) {
-          console.log(data[i])
+          console.log(data[i].state)
         }
         clearInterval(getCoordsTimer)
       })

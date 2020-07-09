@@ -52,8 +52,6 @@ $(document).on('change', '#covidPicker', function () {
         })
         .sort(SortByName)
 
-      console.log(arr3)
-
       fetch(geo_url, { mode: 'cors' })
         .then((resp) => resp.json())
         .then(function (geoData) {
