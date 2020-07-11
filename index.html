@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coronavirus COVID-19 Dashboard</title>
+    <title>Pandemic Presidency of 2020: Full Analysis View</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -39,7 +39,6 @@
         <div class="map_container">
           <div id="mapid"></div>
         </div>
-        <div class="indepth_container"></div>
       </div>
       <div class="cases_by_state_container">
         <h2><strong>COVID-19 Results</strong></h2>
@@ -56,6 +55,16 @@
           <h3 id="natBidenResults"></h3>
           <h3 id="natTrumpResults"></h3>
         </div>
+      </div>
+      <div class="call_to_action_state_data">
+        <h4>Want Specefic State Data? Click Below!</h4>
+        <button
+          type="button"
+          class="btn btn-dark"
+          onclick="window.location.href='/stateanalysis.html'"
+        >
+          Get State Data!
+        </button>
       </div>
     </div>
 

@@ -133,18 +133,28 @@ $(document).on('change', '#covidPicker', function () {
       }
       var biden_total = 0
       for (var i = 0; i < national_poll_biden_total.length; i++) {
-        biden_total += parseInt(national_poll_biden_total[i])
+        if (national_poll_biden_total.length < 1) {
+          biden_total = 0
+        } else {
+          biden_total += parseInt(national_poll_biden_total[i])
+        }
       }
-      var biden_avg = biden_total / national_poll_biden_total.length
+      var biden_avg =
+        biden_total == 0 ? 0 : biden_total / national_poll_biden_total.length
       document.getElementById(
         'natBidenResults',
       ).innerHTML = `Biden: ${Math.floor(biden_avg)}%`
 
       var trump_total = 0
       for (var i = 0; i < national_poll_trump_total.length; i++) {
-        trump_total += parseInt(national_poll_trump_total[i])
+        if (national_poll_trump_total.length < 1) {
+          trump_total = 0
+        } else {
+          trump_total += parseInt(national_poll_trump_total[i])
+        }
       }
-      var trump_avg = trump_total / national_poll_trump_total.length
+      var trump_avg =
+        trump_total == 0 ? 0 : trump_total / national_poll_trump_total.length
 
       document.getElementById(
         'natTrumpResults',

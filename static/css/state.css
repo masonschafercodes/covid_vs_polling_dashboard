@@ -28,7 +28,7 @@ body {
   margin: 0 auto;
 }
 
-.date_picker_container {
+.state_picker_container {
   width: 355px;
   height: 135px;
   background-color: #0b3b5f;
@@ -41,20 +41,18 @@ body {
   margin-top: 10px;
 }
 
-.date_picker h2 {
+.state_picker h2 {
   text-align: center;
   padding-top: 10px;
+  margin-bottom: 30px;
   font-size: 16px;
   color: #819bae;
   font-family: 'Maven Pro', sans-serif;
 }
 
-.date_picker h4 {
-  text-align: center;
-  padding-top: 10px;
-  font-size: 16px;
-  color: #819bae;
-  font-family: 'Maven Pro', sans-serif;
+.state_picker select {
+  display: block;
+  margin: 0 auto;
 }
 
 .cases_by_state_container {
