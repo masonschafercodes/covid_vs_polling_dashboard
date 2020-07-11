@@ -56,16 +56,22 @@ $(document).on('change', '#covidPicker', function () {
         .then((resp) => resp.json())
         .then(function (geoData) {
           var geo_arr = geoData.sort(SortByName)
+          console.log(geo_arr)
+          console.log(arr3)
 
           for (var z = 0; z < geo_arr.length; z++) {
-            L.marker([geo_arr[z].lat, geo_arr[z].long])
-              .addTo(map)
-              .bindPopup(
-                `State: ${arr3[z].state} <br /> Deaths: ${
-                  arr3[z].deaths == null ? '0' : arr3[z].deaths
-                } <br /> Cases: ${arr3[z].confirmed_cases}`,
-              )
-              .openPopup()
+            if (arr3[z].state == 'WA') {
+              console.log('Washington is not welcome')
+            } else {
+              L.marker([geo_arr[z].lat, geo_arr[z].long])
+                .addTo(map)
+                .bindPopup(
+                  `State: ${arr3[z].state} <br /> Deaths: ${
+                    arr3[z].deaths == null ? '0' : arr3[z].deaths
+                  } <br /> Cases: ${arr3[z].confirmed_cases}`,
+                )
+                .openPopup()
+            }
           }
         })
 
