@@ -16,12 +16,9 @@
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
       crossorigin=""
     />
-    <script
-      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" href="./static/libraries/c3.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="./static/libraries/c3.min.js"></script>
 
     <link rel="stylesheet" href="./static/css/state.css" />
   </head>
@@ -87,7 +84,9 @@
             <option value="WY">Wyoming</option>
           </select>
         </div>
-        <div class="map_container"></div>
+        <div class="map_container">
+          <div id="chart"></div>
+        </div>
       </div>
       <div class="cases_by_state_container">
         <h2><strong>COVID-19 Results</strong></h2>
@@ -106,13 +105,14 @@
         </div>
       </div>
       <div class="call_to_action_state_data">
-        <h4>Want Specefic State Data? Click Below!</h4>
+        <i><p>***WARNING: Some Data may be Incomplete***</p></i>
+        <h4>Want the National Overview? Click Below!</h4>
         <button
           type="button"
           class="btn btn-dark"
-          onclick="window.location.href='/stateanalysis.html'"
+          onclick="window.location.href='/index.html'"
         >
-          Get State Data!
+          Get Everything!
         </button>
       </div>
     </div>
@@ -141,5 +141,6 @@
       src="https://cdn.jsdelivr.net/npm/leaflet-timedimension@1.1.1/dist/leaflet.timedimension.min.js"
     ></script>
     <script src="./static/js/statepicker.update.js"></script>
+    <script src="./static/js/graphing.helper.js"></script>
   </body>
 </html>

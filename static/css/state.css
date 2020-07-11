@@ -23,6 +23,10 @@ body {
   padding-bottom: 5px;
 }
 
+.call_to_action_state_data p {
+  color: #819bae;
+}
+
 .call_to_action_state_data button {
   color: #819bae;
   margin: 0 auto;
@@ -96,7 +100,7 @@ body {
 .map_container {
   width: 1250px;
   height: 1025px;
-  background-color: #0b3b5f;
+  background-color: #0f5b94;
   margin-left: 380px;
   position: absolute;
   top: 78px;

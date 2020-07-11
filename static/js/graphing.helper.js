@@ -1,8 +1,3 @@
-//Function to add commas to numbers
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-}
-
 function findStateAbbr(pickedState) {
   let stateToFind = ''
   if (pickedState == 'Kentucky') {
@@ -75,12 +70,18 @@ function findStateAbbr(pickedState) {
   return stateToFind
 }
 
+function addHyphens(n) {
+  n = n.toString()
+  let year = n.substring(0, 4)
+  let month = n.substring(4, 6)
+  let day = n.substring(6, 8)
+  let dateWithHyphens = year + '-' + month + '-' + day
+  return dateWithHyphens
+}
+
 $(document).on('change', '#statePicker', function () {
   var e = document.getElementById('statePicker')
   var statePicked = e.options[e.selectedIndex].text
-
-  document.getElementById('currentState').innerHTML = statePicked
-  document.getElementById('pollCurrentSate').innerHTML = statePicked
 
   fetch('http://localhost:3000/api/poll/' + statePicked, { mode: 'cors' })
     .then((resp) => resp.json())
@@ -88,7 +89,6 @@ $(document).on('change', '#statePicker', function () {
       var poll_arr = data.sort(function (a, b) {
         return new Date(b.date) - new Date(a.date)
       })
-      console.log(poll_arr)
 
       let state_biden_pct = []
       let state_trump_pct = []
@@ -100,62 +100,75 @@ $(document).on('change', '#statePicker', function () {
           state_trump_pct.push(poll_arr[i].pct)
         }
       }
+      let stateToFind = findStateAbbr(statePicked)
+      fetch('http://localhost:3000/api/state/' + stateToFind, { mode: 'cors' })
+        .then((resp) => resp.json())
+        .then(function (data) {
+          var state_arr = data.sort(function (a, b) {
+            return new Date(b.date) - new Date(a.date)
+          })
 
-      var biden_total = 0
-      for (var i = 0; i < state_biden_pct.length; i++) {
-        if (state_biden_pct.length < 1) {
-          biden_total = 0
-        } else {
-          biden_total += parseInt(state_biden_pct[i])
-        }
-      }
-      var biden_avg =
-        biden_total == 0 ? 0 : biden_total / state_biden_pct.length
-      document.getElementById(
-        'natBidenResults',
-      ).innerHTML = `Biden: ${Math.floor(biden_avg)}%`
+          let state_covid_data = []
+          let dates = []
 
-      var trump_total = 0
-      for (var i = 0; i < state_trump_pct.length; i++) {
-        if (state_trump_pct.length < 1) {
-          trump_total = 0
-        } else {
-          trump_total += parseInt(state_trump_pct[i])
-        }
-      }
-      var trump_avg =
-        trump_total == 0 ? 0 : trump_total / state_trump_pct.length
+          for (var i = 0; i < state_arr.length; i++) {
+            state_covid_data.push(state_arr[i].deaths)
+            let date_base = state_arr[i].date.toString()
+            let date_year = date_base.substring(0, 4)
+            let date_month = date_base.substring(4, 6)
+            let date_day = date_base.substring(6, 8)
+            let new_date = new Date(date_year, date_month, date_day)
+            console.log(new_date)
+            dates.push(new_date)
+          }
 
-      document.getElementById(
-        'natTrumpResults',
-      ).innerHTML = `Trump: ${Math.floor(trump_avg)}%`
-    })
-
-  let stateToFind = findStateAbbr(statePicked)
-  console.log(stateToFind)
-
-  fetch('http://localhost:3000/api/state/' + stateToFind, { mode: 'cors' })
-    .then((resp) => resp.json())
-    .then(function (data) {
-      state_covid_arr = data.sort(function (a, b) {
-        return new Date(b.date) - new Date(a.date)
-      })
-
-      var state_cases_total = 0
-      var state_deaths_total = 0
-
-      for (var j = 0; j < state_covid_arr.length; j++) {
-        currentDataNode = state_covid_arr[j]
-
-        state_cases_total += currentDataNode.confirmed_cases
-        state_deaths_total += currentDataNode.deaths
-      }
-
-      document.getElementById(
-        'natCaseSpan',
-      ).innerHTML = `Cases: ${numberWithCommas(state_cases_total)}`
-      document.getElementById(
-        'natDeathSpan',
-      ).innerHTML = `Deaths: ${numberWithCommas(state_deaths_total)}`
+          var chart = c3.generate({
+            bindto: '#chart',
+            size: {
+              height: 1020,
+              width: 1220,
+            },
+            data: {
+              x: 'x',
+              xFormat: '%Y-%m-%d',
+              json: {
+                x: dates.reverse(),
+                Trump: state_trump_pct.reverse(),
+                Biden: state_biden_pct.reverse(),
+                Covid_Cases: state_covid_data.reverse(),
+              },
+              axes: {
+                Trump: 'y',
+                Biden: 'y',
+                Covid_Cases: 'y2', // ADD
+              },
+              axis: {
+                x: {
+                  type: 'timeseries',
+                  tick: {
+                    format: '%Y-%m-%d',
+                  },
+                },
+                y2: {
+                  show: true,
+                  label: {
+                    text: 'Y2 Label',
+                    position: 'outer-middle',
+                  },
+                },
+              },
+              types: {
+                Trump: 'line',
+                Biden: 'line',
+                Covid_Cases: 'area-spline',
+              },
+              colors: {
+                Trump: '#FF0000',
+                Biden: '#0000ff',
+                Covid: '#808080',
+              },
+            },
+          })
+        })
     })
 })
