@@ -12,7 +12,7 @@ function coordsIntervalFunction() {
   if (lat === 'undefined' || lng === 'undefined') {
     console.log('skipped')
   } else {
-    fetch('http://localhost:5000/api/state_geometry', { mode: 'cors' })
+    fetch('http://localhost:3000/api/state_geometry', { mode: 'cors' })
       .then((resp) => resp.json())
       .then(function (data) {
         for (var i = 0; i < data.length; i++) {

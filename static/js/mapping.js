@@ -40,8 +40,8 @@ function numberWithCommas(x) {
 
 //Fetch call and logic to dynamically serve the incoming data to the page
 $(document).on('change', '#covidPicker', function () {
-  var data_url = 'http://127.0.0.1:5000/api/state_data'
-  var geo_url = 'http://127.0.0.1:5000/api/state_geometry'
+  var data_url = 'http://127.0.0.1:3000/api/state_data'
+  var geo_url = 'http://127.0.0.1:3000/api/state_geometry'
   fetch(data_url + `/${parseInt(date_to_search)}`, { mode: 'cors' })
     .then((resp) => resp.json())
     .then(function (data) {

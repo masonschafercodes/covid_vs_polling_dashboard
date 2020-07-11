@@ -1,4 +1,4 @@
-var state_data_url = 'http://localhost:5000/api/state_data'
+var state_data_url = 'http://localhost:3000/api/state_data'
 
 function numberWithCommas(x) {
   if (x == null || x == undefined) {
