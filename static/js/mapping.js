@@ -8,6 +8,19 @@ $(document).on('change', '#covidPicker', function () {
     .value.replace(/-|\s/g, '')
 })
 
+var poll_to_search = ''
+$(document).on('change', '#covidPicker', function () {
+  poll_to_search = document
+    .getElementById('covidPicker')
+    .value.split('-')
+    .reverse()
+    .join('/')
+    .replace(/\b0/g, '')
+
+  var date_values = poll_to_search.split('/')
+  poll_to_search = `${date_values[1]}/${date_values[0]}/${date_values[2]}`
+})
+
 //creating Map View
 var map = L.map('mapid').setView([37.8, -96], 4)
 var accessToken =
@@ -42,6 +55,7 @@ function numberWithCommas(x) {
 $(document).on('change', '#covidPicker', function () {
   var data_url = 'http://127.0.0.1:3000/api/state_data'
   var geo_url = 'http://127.0.0.1:3000/api/state_geometry'
+  var poll_url = 'http://127.0.0.1:3000/api/poll_data'
   fetch(data_url + `/${parseInt(date_to_search)}`, { mode: 'cors' })
     .then((resp) => resp.json())
     .then(function (data) {
@@ -91,5 +105,49 @@ $(document).on('change', '#covidPicker', function () {
       document.getElementById(
         'natDeathSpan',
       ).innerHTML = `Deaths: ${numberWithCommas(national_deaths_total)}`
+    })
+  let encoded_date = encodeURIComponent(poll_to_search)
+  let poll_uri = poll_url + '/' + encoded_date
+  fetch(poll_uri, { mode: 'cors' })
+    .then((resp) => resp.json())
+    .then(function (data) {
+      var poll_arr = data
+        .sort(function (a, b) {
+          return new Date(b.date) - new Date(a.date)
+        })
+        .sort(SortByName)
+
+      console.log(poll_arr)
+
+      var national_poll_trump_total = []
+      var national_poll_biden_total = []
+
+      for (var j = 0; j < poll_arr.length; j++) {
+        currentDataNode = poll_arr[j]
+
+        if (currentDataNode.candidate === 'Joseph R. Biden Jr.') {
+          national_poll_biden_total.push(currentDataNode.pct)
+        } else {
+          national_poll_trump_total.push(currentDataNode.pct)
+        }
+      }
+      var biden_total = 0
+      for (var i = 0; i < national_poll_biden_total.length; i++) {
+        biden_total += parseInt(national_poll_biden_total[i])
+      }
+      var biden_avg = biden_total / national_poll_biden_total.length
+      document.getElementById(
+        'natBidenResults',
+      ).innerHTML = `Biden: ${Math.floor(biden_avg)}%`
+
+      var trump_total = 0
+      for (var i = 0; i < national_poll_trump_total.length; i++) {
+        trump_total += parseInt(national_poll_trump_total[i])
+      }
+      var trump_avg = trump_total / national_poll_trump_total.length
+
+      document.getElementById(
+        'natTrumpResults',
+      ).innerHTML = `Trump: ${Math.floor(trump_avg)}%`
     })
 })

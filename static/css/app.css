@@ -49,100 +49,33 @@ body {
   margin-left: 65px;
 }
 
-.cases_by_state h3 {
-  text-align: center;
-  padding-top: 10px;
-  font-size: 16px;
-  color: #819bae;
-  font-family: 'Maven Pro', sans-serif;
-}
-
-.deaths_by_state_container {
+.national_poll_container {
   width: 355px;
-  height: 580px;
+  height: 420px;
   background-color: #0b3b5f;
   border-radius: 4px;
   margin-top: 25px;
   margin-left: 65px;
 }
 
+.national_poll_container h2,
 .cases_by_state_container h2 {
   text-align: center;
   padding-top: 10px;
   font-size: 24px;
   color: #819bae;
-  font-family: 'Maven Pro', sans-serif;
 }
 
+.national_polling_counter h3,
 #national_case_container h3 {
   margin-top: 55px;
 }
 
+.national_poll_container h3,
 .cases_by_state_container h3 {
   text-align: center;
   padding-top: 10px;
   color: #819bae;
-  font-family: 'Maven Pro', sans-serif;
-}
-
-.deaths_by_state h3 {
-  text-align: center;
-  padding-top: 10px;
-  font-size: 16px;
-  color: #819bae;
-  font-family: 'Maven Pro', sans-serif;
-}
-
-.confirmed_cases_table * {
-  color: #819bae;
-}
-
-.fixed_header {
-  width: 352px;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-
-.fixed_header tbody {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  height: 380px;
-}
-
-.fixed_header thead tr {
-  display: block;
-}
-
-.fixed_header th,
-.fixed_header td {
-  padding: 5px;
-  text-align: left;
-  width: 200px;
-}
-
-.fixed_header1 {
-  width: 352px;
-  table-layout: fixed;
-  border-collapse: collapse;
-}
-
-.fixed_header1 tbody {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  height: 563px;
-}
-
-.fixed_header1 thead tr {
-  display: block;
-}
-
-.fixed_header1 th,
-.fixed_header1 td {
-  padding: 5px;
-  text-align: left;
-  width: 200px;
 }
 
 .map_container {
