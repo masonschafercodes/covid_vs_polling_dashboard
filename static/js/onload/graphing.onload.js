@@ -65,28 +65,6 @@ $(document).ready(function () {
                 Biden: 'y',
                 Covid_Cases: 'y2', // ADD
               },
-              axis: {
-                x: {
-                  type: 'timeseries',
-                  tick: {
-                    format: '%Y-%m-%d',
-                  },
-                },
-                y: {
-                  tick: {
-                    format: function (d) {
-                      return '%' + d
-                    },
-                  },
-                },
-                y2: {
-                  show: true,
-                  label: {
-                    text: 'Y2 Label',
-                    position: 'outer-middle',
-                  },
-                },
-              },
               types: {
                 Trump: 'line',
                 Biden: 'line',
@@ -96,6 +74,28 @@ $(document).ready(function () {
                 Trump: '#FF0000',
                 Biden: '#0000ff',
                 Covid: '#808080',
+              },
+            },
+            axis: {
+              x: {
+                type: 'timeseries',
+                tick: {
+                  format: '%Y-%m-%d',
+                },
+                label: 'Date',
+              },
+              y2: {
+                show: true,
+                label: {
+                  text: 'COVID CASES',
+                  position: 'outer-middle',
+                },
+              },
+              y: {
+                label: {
+                  text: 'Approval Rate (%)',
+                  position: 'outer-middle',
+                },
               },
             },
           })

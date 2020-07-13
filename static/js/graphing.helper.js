@@ -138,24 +138,10 @@ $(document).on('change', '#statePicker', function () {
                 Covid_Cases: state_covid_data.reverse(),
               },
               axes: {
+                x: 'x',
                 Trump: 'y',
                 Biden: 'y',
                 Covid_Cases: 'y2', // ADD
-              },
-              axis: {
-                x: {
-                  type: 'timeseries',
-                  tick: {
-                    format: '%Y-%m-%d',
-                  },
-                },
-                y2: {
-                  show: true,
-                  label: {
-                    text: 'Y2 Label',
-                    position: 'outer-middle',
-                  },
-                },
               },
               types: {
                 Trump: 'line',
@@ -166,6 +152,28 @@ $(document).on('change', '#statePicker', function () {
                 Trump: '#FF0000',
                 Biden: '#0000ff',
                 Covid: '#808080',
+              },
+            },
+            axis: {
+              x: {
+                type: 'timeseries',
+                tick: {
+                  format: '%Y-%m-%d',
+                },
+                label: 'Date',
+              },
+              y2: {
+                show: true,
+                label: {
+                  text: 'COVID CASES',
+                  position: 'outer-middle',
+                },
+              },
+              y: {
+                label: {
+                  text: 'Approval Rate (%)',
+                  position: 'outer-middle',
+                },
               },
             },
           })
